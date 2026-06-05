@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     app_name: str = "Login System API"
     api_v1_prefix: str = "/api/v1"
     database_url: str = "sqlite:///./app.db"
+    # Placeholder-only development default. Replace via environment variables.
     secret_key: str = "replace-with-a-dev-only-secret"
     algorithm: str = "HS256"
     access_token_expire_minutes: int = 30
