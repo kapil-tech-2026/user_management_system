@@ -9,6 +9,7 @@ from app.models.user import User
 from app.repositories.user_repository import UserRepository
 from app.services.exceptions import (
     AuthenticationError,
+    AuthorizationError,
     InactiveUserError,
     InvalidTokenError,
     UserAlreadyExistsError,
@@ -28,6 +29,7 @@ class AuthService:
         return self.user_repository.create_user(
             email=email,
             hashed_password=hashed_password,
+            role="user",
         )
 
     def authenticate_user(self, email: str, password: str) -> User:
@@ -68,5 +70,11 @@ class AuthService:
 
         if not user.is_active:
             raise InactiveUserError("Inactive user")
+
+        return user
+
+    def require_admin_user(self, user: User) -> User:
+        if user.role != "admin":
+            raise AuthorizationError("Admin role required")
 
         return user

@@ -13,11 +13,13 @@ class UserRepository:
         email: str,
         hashed_password: str,
         is_active: bool = True,
+        role: str = "user",
     ) -> User:
         user = User(
             email=email,
             hashed_password=hashed_password,
             is_active=is_active,
+            role=role,
         )
         self.db.add(user)
         self.db.commit()

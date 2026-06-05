@@ -3,6 +3,7 @@
 from app.services.auth_service import AuthService
 from app.services.exceptions import (
     AuthenticationError,
+    AuthorizationError,
     InactiveUserError,
     InvalidTokenError,
     UserAlreadyExistsError,
@@ -12,6 +13,7 @@ from app.services.exceptions import (
 __all__ = [
     "AuthService",
     "AuthenticationError",
+    "AuthorizationError",
     "InactiveUserError",
     "InvalidTokenError",
     "UserAlreadyExistsError",

@@ -14,6 +14,10 @@ class InactiveUserError(AuthServiceError):
     """Raised when an inactive user attempts authentication."""
 
 
+class AuthorizationError(AuthServiceError):
+    """Raised when a user lacks the required role."""
+
+
 class InvalidTokenError(AuthServiceError):
     """Raised when a token is missing, invalid, or expired."""
 
